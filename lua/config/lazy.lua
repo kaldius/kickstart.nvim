@@ -188,12 +188,35 @@ require('lazy').setup({
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
-        -- defaults = {
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
-        -- },
-        -- pickers = {}
+        defaults = {
+          prompt_prefix = '   ',
+          selection_caret = ' ',
+          entry_prefix = ' ',
+          -- borderchars = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' }, -- To remove borders
+          sorting_strategy = 'ascending',
+          scroll_strategy = 'limit',
+          mappings = {
+            n = { ['q'] = 'close' },
+            i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+          },
+          layout_strategy = 'vertical',
+          layout_config = {
+            vertical = {
+              preview_height = 0.50,
+            },
+            width = 0.95,
+            height = 0.95,
+          },
+        },
+        pickers = {
+          help_tags = {
+            mappings = {
+              i = {
+                ['<CR>'] = 'select_vertical',
+              },
+            },
+          },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
@@ -247,11 +270,6 @@ require('lazy').setup({
           prompt_title = 'Live Grep in Open Files',
         }
       end, { desc = '[S]earch [/] in Open Files' })
-
-      -- Shortcut for searching your Neovim configuration files
-      vim.keymap.set('n', '<leader>sn', function()
-        builtin.find_files { cwd = vim.fn.stdpath 'config' }
-      end, { desc = '[S]earch [N]eovim files' })
     end,
   },
 
