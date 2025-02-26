@@ -38,4 +38,4 @@ map('n', '<C-S-l>', '<C-w>L', { desc = 'Move current window to the right' })
 map('n', '<C-S-j>', '<C-w>J', { desc = 'Move current window to the bottom' })
 map('n', '<C-S-k>', '<C-w>K', { desc = 'Move current window to the top' })
 
-map('n', '<leader>pv', ':Ex<CR>', { desc = 'Go to [p]roject [v]iew' })
+map('n', '<leader>pv', ':Ex<CR>', { desc = 'Go to [p]roject [v]iew', silent = true })
