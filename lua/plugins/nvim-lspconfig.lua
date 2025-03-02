@@ -153,6 +153,7 @@ return {
       end,
     })
 
+    -- TODO: read
     -- Diagnostic Config
     -- See :help vim.diagnostic.Opts
     vim.diagnostic.config {
