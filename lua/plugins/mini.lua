@@ -54,6 +54,28 @@ return { -- Collection of various small independent plugins/modules
       MiniSessions.read(get_session_name())
     end, { desc = '[S]ession [R]ead' })
 
+    --
+    -- Animation for vim movements
+    --
+    local animate = require 'mini.animate'
+    animate.setup {
+      scroll = {
+        timing = animate.gen_timing.linear { duration = 5, unit = 'step' },
+        subscroll = animate.gen_subscroll.equal { max_output_steps = 120 }, -- number of steps in animation (smoothness)
+      },
+    }
+
+    -- Disable by default
+    vim.g.minianimate_disable = true
+
+    vim.keymap.set('n', '<leader>ae', function()
+      vim.g.minianimate_disable = false
+    end, { desc = '[A]nimate [E]nable' })
+
+    vim.keymap.set('n', '<leader>ad', function()
+      vim.g.minianimate_disable = true
+    end, { desc = '[A]nimate [D]isable' })
+
     -- ... and there is more!
     --  Check out: https://github.com/echasnovski/mini.nvim
   end,
