@@ -16,7 +16,6 @@ require('lazy').setup({
   --  Here are some example plugins that I've included in the Kickstart repository.
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
-  require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.neo-tree',
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
