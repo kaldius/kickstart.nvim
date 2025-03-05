@@ -92,13 +92,19 @@ return { -- Fuzzy Finder (files, lsp, etc)
 
     -- See `:help telescope.builtin`
     local builtin = require 'telescope.builtin'
-    local opened_dir = vim.fn.argv()[1] or vim.fn.getcwd() -- dir where vim was opened
+    -- Get the directory where vim was opened, falling back to the current directory
+    local opened_dir = vim.fn.argv()[1] or vim.fn.getcwd()
     vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[F]ind [H]elp' })
     vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[F]ind [K]eymaps' })
-    -- vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = '[F]ind [F]iles' })
     vim.keymap.set('n', '<leader>ff', function()
       builtin.find_files { cwd = opened_dir }
     end, { desc = '[F]ind [F]iles in current working directory' })
+    vim.keymap.set('n', '<leader>fa', function()
+      builtin.find_files {
+        cwd = opened_dir,
+        hidden = true,
+      }
+    end, { desc = '[F]ind [A]ll (including hidden) Files in current working directory' })
     vim.keymap.set('n', '<leader>fn', function()
       builtin.find_files { cwd = vim.fn.stdpath 'config' }
     end, { desc = '[F]ind Files in [N]eovim config' })
@@ -114,6 +120,13 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = '[F]ind [R]esume' })
     vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = '[F]ind Recent Files ("." for repeat)' })
     vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+    vim.keymap.set('n', '<leader>fj', function()
+      builtin.jumplist {
+        -- TODO: able to use percent instead? just want 100%
+        -- TODO: also, is there a global setting for this?
+        fname_width = 200,
+      }
+    end, { desc = '[F]ind [J]umplist' })
 
     -- Slightly advanced example of overriding default behavior and theme
     vim.keymap.set('n', '<leader>/', function()
