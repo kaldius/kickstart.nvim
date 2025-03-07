@@ -103,6 +103,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
       builtin.find_files {
         cwd = opened_dir,
         hidden = true,
+        no_ignore = true,
       }
     end, { desc = '[F]ind [A]ll (including hidden) Files in current working directory' })
     vim.keymap.set('n', '<leader>fn', function()
