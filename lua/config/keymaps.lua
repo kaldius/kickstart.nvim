@@ -1,3 +1,7 @@
+-- Notes:
+-- * `:<mode>map <keys>` shows all mappings for this key combination. use `:<mode>map` alone to see all
+--   e.g. `:nmap <C-h>` shows all mappings for <C-h> in normal mode
+--   e.g. `:tmap` shows all mappings in terminal mode
 local map = vim.keymap.set
 
 -- [[ Basic Keymaps ]]
@@ -24,9 +28,6 @@ map('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
 map('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
 map('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
--- Keybinds to make split navigation easier.
---  Use CTRL+<hjkl> to switch between windows
---
 --  See `:help wincmd` for a list of all window commands
 map('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 map('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
@@ -39,3 +40,6 @@ map('n', '<C-S-j>', '<C-w>J', { desc = 'Move current window to the bottom' })
 map('n', '<C-S-k>', '<C-w>K', { desc = 'Move current window to the top' })
 
 map('n', '<leader>pv', ':Ex<CR>', { desc = 'Go to [p]roject [v]iew', silent = true })
+
+map('n', '<leader>th', '<cmd>:horiz term<CR>', { desc = '[T]erminal [H]orizontal' })
+map('n', '<leader>tv', '<cmd>:vert term<CR>', { desc = '[T]erminal [V]ertical' })
