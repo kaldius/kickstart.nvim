@@ -18,6 +18,12 @@ return {
 
     -- Add your own debuggers here
     'leoluz/nvim-dap-go', -- NOTE: Requires delve to be installed
+
+    -- For parsing .vscode/launch.json files which can sometimes be in json5
+    {
+      'Joakker/lua-json5',
+      build = './install.sh', -- Lazy will run this build command in the repo root each time we install/update
+    },
   },
   keys = {
     -- Basic debugging keymaps, feel free to change to your liking!
@@ -81,6 +87,9 @@ return {
   config = function()
     local dap = require 'dap'
     local dapui = require 'dapui'
+
+    -- Set the .vscode/launch.json decoder to a json5 parser
+    require('dap.ext.vscode').json_decode = require('json5').parse
 
     require('mason-nvim-dap').setup {
       -- Makes a best effort to setup the various debuggers with

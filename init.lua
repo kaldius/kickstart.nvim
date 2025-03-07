@@ -7,6 +7,9 @@ vim.g.maplocalleader = ' '
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
+-- Global variable to tell lua to look for <library_name>.dylib files in every path that it searches for c libraries
+package.cpath = package.cpath .. ';?.dylib'
+
 require 'config.options'
 require 'config.keymaps'
 require 'config.autocmds'

@@ -31,7 +31,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- Keep signcolumn on by default
-vim.opt.signcolumn = 'auto:3'
+vim.opt.signcolumn = 'auto:1-3'
 
 -- Decrease update time
 vim.opt.updatetime = 250 -- updatetime(ms) is used for writing to swapfile and CursorHold
