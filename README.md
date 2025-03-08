@@ -1,5 +1,21 @@
 # kickstart.nvim
 
+## Notes on this fork
+* `lua-json5` requires rust to be installed on the machine, and for macos, the following must be added to your `$CARGO_HOME/config` (read this [article](https://kdheepak.com/blog/loading-a-rust-library-as-a-lua-module-in-neovim/) to find out more)
+```
+[target.x86_64-apple-darwin]
+rustflags = [
+    "-C", "link-arg=-undefined",
+    "-C", "link-arg=dynamic_lookup",
+]
+
+[target.aarch64-apple-darwin]
+rustflags = [
+    "-C", "link-arg=-undefined",
+    "-C", "link-arg=dynamic_lookup",
+]
+```
+
 ## Introduction
 
 A starting point for Neovim that is:
