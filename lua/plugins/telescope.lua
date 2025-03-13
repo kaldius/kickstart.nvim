@@ -22,7 +22,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     { 'nvim-telescope/telescope-ui-select.nvim' },
 
     -- Useful for getting pretty icons, but requires a Nerd Font.
-    { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+    { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
   },
   config = function()
     -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -92,16 +92,11 @@ return { -- Fuzzy Finder (files, lsp, etc)
 
     -- See `:help telescope.builtin`
     local builtin = require 'telescope.builtin'
-    -- Get the directory where vim was opened, falling back to the current directory
-    local opened_dir = vim.fn.argv()[1] or vim.fn.getcwd()
     vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[F]ind [H]elp' })
     vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[F]ind [K]eymaps' })
-    vim.keymap.set('n', '<leader>ff', function()
-      builtin.find_files { cwd = opened_dir }
-    end, { desc = '[F]ind [F]iles in current working directory' })
+    vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = '[F]ind [F]iles in current working directory' })
     vim.keymap.set('n', '<leader>fa', function()
       builtin.find_files {
-        cwd = opened_dir,
         hidden = true,
         no_ignore = true,
       }
@@ -113,7 +108,6 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = '[F]ind current [W]ord' })
     vim.keymap.set('n', '<leader>fg', function()
       builtin.live_grep {
-        cwd = opened_dir,
         disable_coordinates = true,
       }
     end, { desc = '[F]ind by Live [G]rep' })
