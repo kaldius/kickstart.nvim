@@ -1,3 +1,6 @@
+-- NOTE:
+--Use `:autocmd <event_name>` to query all autocmds that are triggered by the event.
+--
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -28,6 +31,27 @@ vim.api.nvim_create_autocmd({ 'CursorHold' }, {
         scope = 'cursor', -- "cursor"/"line"/"buffer" dictating what diagnostics should show up
         focusable = false,
       })
+    end
+  end,
+})
+
+-- Automatically cd into the directory if nvim is opened with one argument
+-- For both cases:
+-- 1. `nvim <dir>` and
+-- 2. `nvim <dir>/<filename>`,
+-- vim.fn.getcwd() will return `<dir>`
+vim.api.nvim_create_autocmd('VimEnter', {
+  callback = function()
+    local arg = vim.fn.argv(0)
+    if arg and arg ~= '' and type(arg) == 'string' then
+      if vim.fn.isdirectory(arg) == 1 then
+        -- If the argument is a directory, change to that directory
+        vim.cmd('cd ' .. vim.fn.fnamemodify(arg, ':p'))
+      elseif vim.fn.filereadable(arg) == 1 then
+        -- If the argument is a file, change to its directory
+        local file_dir = vim.fn.fnamemodify(arg, ':h')
+        vim.cmd('cd ' .. file_dir)
+      end
     end
   end,
 })
