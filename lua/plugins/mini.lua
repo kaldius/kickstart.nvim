@@ -33,28 +33,6 @@ return { -- Collection of various small independent plugins/modules
     end
 
     --
-    -- Session Management
-    --
-    require('mini.sessions').setup()
-
-    local function get_session_name()
-      -- Get the directory where Neovim was opened, falling back to the current directory
-      local dir = vim.fn.argv()[1] or vim.fn.getcwd()
-      -- Remove leading period if present (for hidden directories)
-      dir = dir:match '^%.' and dir:sub(2) or dir
-      -- Replace all slashes with dashes, removing leading slash if present
-      return dir:sub(1, 1) == '/' and dir:sub(2):gsub('/', '-') or dir:gsub('/', '-')
-    end
-
-    vim.keymap.set('n', '<leader>sw', function()
-      MiniSessions.write(get_session_name())
-    end, { desc = '[S]ession [W]rite' })
-
-    vim.keymap.set('n', '<leader>sr', function()
-      MiniSessions.read(get_session_name())
-    end, { desc = '[S]ession [R]ead' })
-
-    --
     -- Animation for vim movements
     --
     local animate = require 'mini.animate'
