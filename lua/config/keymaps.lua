@@ -22,16 +22,6 @@ map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [q]ui
 -- or just use <C-\><C-n> to exit terminal mode
 map('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
--- TIP: Disable arrow keys in normal mode
-map('n', '<left>', '10<C-w><')
-map('n', '<right>', '10<C-w>>')
-map('n', '<up>', '5<C-w>+')
-map('n', '<down>', '5<C-w>-')
-map('n', '<S-left>', '<C-w><')
-map('n', '<S-right>', '<C-w>>')
-map('n', '<S-up>', '<C-w>+')
-map('n', '<S-down>', '<C-w>-')
-
 --  See `:help wincmd` for a list of all window commands
 map('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 map('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
