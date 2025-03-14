@@ -18,7 +18,7 @@ return {
       max_path_length = 0, -- Shorten the display path if length exceeds this threshold. Use 0 if don't want to shorten the path at all.
     }
 
-    vim.keymap.set('n', '<leader>sl', manager.load_session, { desc = '[S]ession [L]oad' })
-    vim.keymap.set('n', '<leader>sd', manager.delete_session, { desc = '[S]ession [D]elete' })
+    vim.keymap.set('n', '<leader>sl', manager.load_session, { desc = '[s]ession [l]oad' })
+    vim.keymap.set('n', '<leader>sd', manager.delete_session, { desc = '[s]ession [d]elete' })
   end,
 }

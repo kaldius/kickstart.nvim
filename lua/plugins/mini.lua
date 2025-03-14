@@ -48,11 +48,11 @@ return { -- Collection of various small independent plugins/modules
 
     vim.keymap.set('n', '<leader>ae', function()
       vim.g.minianimate_disable = false
-    end, { desc = '[A]nimate [E]nable' })
+    end, { desc = '[a]nimate [e]nable' })
 
     vim.keymap.set('n', '<leader>ad', function()
       vim.g.minianimate_disable = true
-    end, { desc = '[A]nimate [D]isable' })
+    end, { desc = '[a]nimate [d]isable' })
 
     -- ... and there is more!
     --  Check out: https://github.com/echasnovski/mini.nvim

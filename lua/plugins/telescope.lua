@@ -92,36 +92,43 @@ return { -- Fuzzy Finder (files, lsp, etc)
 
     -- See `:help telescope.builtin`
     local builtin = require 'telescope.builtin'
-    vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[F]ind [H]elp' })
-    vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[F]ind [K]eymaps' })
-    vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = '[F]ind [F]iles in current working directory' })
-    vim.keymap.set('n', '<leader>fa', function()
+    vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[f]ind [h]elp' })
+    vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[f]ind [k]eymaps' })
+    vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = '[f]ind [f]iles' })
+    vim.keymap.set('n', '<leader>fF', function()
       builtin.find_files {
         hidden = true,
         no_ignore = true,
       }
-    end, { desc = '[F]ind [A]ll (including hidden) Files in current working directory' })
+    end, { desc = '[f]ind ALL [F]iles' })
     vim.keymap.set('n', '<leader>fn', function()
       builtin.find_files { cwd = vim.fn.stdpath 'config' }
-    end, { desc = '[F]ind Files in [N]eovim config' })
-    vim.keymap.set('n', '<leader>fb', builtin.builtin, { desc = '[F]ind Telescope [B]uiltin functions' })
-    vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = '[F]ind current [W]ord' })
+    end, { desc = '[f]ind files in [n]eovim config' })
+    vim.keymap.set('n', '<leader>fb', builtin.builtin, { desc = '[f]ind Telescope [b]uiltin functions' })
+    vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = '[f]ind current [w]ord' })
     vim.keymap.set('n', '<leader>fg', function()
       builtin.live_grep {
         disable_coordinates = true,
       }
-    end, { desc = '[F]ind by Live [G]rep' })
-    vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[F]ind [D]iagnostics' })
-    vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = '[F]ind [R]esume' })
-    vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = '[F]ind Recent Files ("." for repeat)' })
-    vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+    end, { desc = '[f]ind by live [g]rep' })
+    vim.keymap.set('n', '<leader>fG', function()
+      builtin.live_grep {
+        hidden = true,
+        no_ignore = true,
+        disable_coordinates = true,
+      }
+    end, { desc = '[f]ind ALL files by live [G]rep' })
+    vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[f]ind [d]iagnostics' })
+    vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = '[f]ind [r]esume' })
+    vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = '[f]ind Recent Files ("." for repeat)' })
+    vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] find existing buffers' })
     vim.keymap.set('n', '<leader>fj', function()
       builtin.jumplist {
         -- TODO: able to use percent instead? just want 100%
         -- TODO: also, is there a global setting for this?
         fname_width = 200,
       }
-    end, { desc = '[F]ind [J]umplist' })
+    end, { desc = '[f]ind [j]umplist' })
 
     -- Slightly advanced example of overriding default behavior and theme
     vim.keymap.set('n', '<leader>/', function()
@@ -130,7 +137,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
         winblend = 10,
         previewer = false,
       })
-    end, { desc = '[/] Fuzzily search in current buffer' })
+    end, { desc = '[/] fuzzily search in current buffer' })
 
     -- It's also possible to pass additional configuration options.
     --  See `:help telescope.builtin.live_grep()` for information about particular keys
@@ -139,6 +146,6 @@ return { -- Fuzzy Finder (files, lsp, etc)
         grep_open_files = true,
         prompt_title = 'Live Grep in Open Files',
       }
-    end, { desc = '[F]ind [/] in Open Files' })
+    end, { desc = '[f]ind [/] in open files' })
   end,
 }

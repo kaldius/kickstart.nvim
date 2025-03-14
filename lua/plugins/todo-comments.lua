@@ -19,7 +19,7 @@ return { -- Highlight todo, notes, etc in comments
       end,
       desc = 'Previous Todo Comment',
     },
-    { '<leader>ft', '<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>', desc = '[F]ind Critical [T]odos' },
-    { '<leader>fT', '<cmd>TodoTelescope<cr>', desc = '[F]ind ALL [T]odos' },
+    { '<leader>ft', '<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>', desc = '[f]ind Critical [t]odos' },
+    { '<leader>fT', '<cmd>TodoTelescope<cr>',                         desc = '[f]ind ALL [T]odos' },
   },
 }

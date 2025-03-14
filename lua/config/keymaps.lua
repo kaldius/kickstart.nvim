@@ -12,7 +12,7 @@ local map = vim.keymap.set
 map('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
-map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [q]uickfix list' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -45,5 +45,5 @@ map('n', '<C-S-k>', '<C-w>K', { desc = 'Move current window to the top' })
 
 map('n', '<leader>pv', ':Ex<CR>', { desc = 'Go to [p]roject [v]iew', silent = true })
 
-map('n', '<leader>th', '<cmd>:horiz term<CR>', { desc = '[T]erminal [H]orizontal' })
-map('n', '<leader>tv', '<cmd>:vert term<CR>', { desc = '[T]erminal [V]ertical' })
+map('n', '<leader>th', '<cmd>:horiz term<CR>', { desc = '[t]erminal [h]orizontal' })
+map('n', '<leader>tv', '<cmd>:vert term<CR>', { desc = '[t]erminal [v]ertical' })
