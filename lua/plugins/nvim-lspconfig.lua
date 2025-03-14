@@ -72,23 +72,23 @@ return {
         -- Jump to the definition of the word under your cursor.
         --  This is where a variable was first declared, or where a function is defined, etc.
         --  To jump back, press <C-t>.
-        map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+        map('gd', require('telescope.builtin').lsp_definitions, '[g]oto [d]efinition')
 
         -- Find references for the word under your cursor.
         map('gr', function()
           require('telescope.builtin').lsp_references {
             include_declaration = false,
           }
-        end, '[G]oto [R]eferences')
+        end, '[g]oto [r]eferences')
 
         -- Jump to the implementation of the word under your cursor.
         --  Useful when your language has ways of declaring types without an actual implementation.
-        map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+        map('gI', require('telescope.builtin').lsp_implementations, '[g]oto [I]mplementation')
 
         -- Jump to the type of the word under your cursor.
         --  Useful when you're not sure what type a variable is and you want to see
         --  the definition of its *type*, not where it was *defined*.
-        map('gt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
+        map('gt', require('telescope.builtin').lsp_type_definitions, '[g]oto [t]ype Definition')
 
         -- Fuzzy find all the symbols in your current document.
         --  Symbols are things like variables, functions, types, etc.
