@@ -46,17 +46,17 @@ return {              -- Useful plugin to show you pending keybinds.
 
     -- Document existing key chains
     spec = {
-      { '<leader>a', group = '[a]nimate',  mode = { 'n' } },
-      { '<leader>c', group = '[c]ode',     mode = { 'n', 'x' } },
+      { '<leader>a', group = '[a]nimate',          mode = { 'n' } },
+      { '<leader>c', group = '[c]ode',             mode = { 'n', 'x' } },
       { '<leader>d', group = '[d]ocument' },
       { '<leader>f', group = '[f]ind' },
-      { '<leader>g', group = '[g]it',      mode = { 'n', 'v' } },
-      { '<leader>h', group = '[h]arpoon',  mode = { 'n' } },
-      { '<leader>p', group = '[p]roject',  mode = { 'n' } },
+      { '<leader>g', group = '[g]it',              mode = { 'n', 'v' } },
+      { '<leader>h', group = '[h]arpoon',          mode = { 'n' } },
+      { '<leader>p', group = '[p]roject',          mode = { 'n' } },
       { '<leader>r', group = '[r]ename' },
-      { '<leader>s', group = '[s]ession' },
+      { '<leader>s', group = '[s]ession/[s]ymbols' },
       { '<leader>t', group = '[t]erminal' },
-      { '<leader>w', group = '[w]orkspace' },
+      { '<leader>w', group = '[w]indow' },
     },
   },
 }
