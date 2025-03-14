@@ -1,0 +1,63 @@
+return {
+  'sindrets/winshift.nvim',
+  config = function()
+    require("winshift").setup({
+      highlight_moving_win = true, -- Highlight the window being moved
+      focused_hl_group = "Visual", -- The highlight group used for the moving window
+      moving_win_options = {
+        -- These are local options applied to the moving window while it's
+        -- being moved. They are unset when you leave Win-Move mode.
+        wrap = false,
+        cursorline = false,
+        cursorcolumn = false,
+        colorcolumn = "",
+      },
+      keymaps = {
+        disable_defaults = true, -- Disable the default keymaps
+        win_move_mode = {
+          ["h"] = "left",
+          ["j"] = "down",
+          ["k"] = "up",
+          ["l"] = "right",
+          ["H"] = "far_left",
+          ["J"] = "far_down",
+          ["K"] = "far_up",
+          ["L"] = "far_right",
+        },
+      },
+      ---A function that should prompt the user to select a window.
+      ---
+      ---The window picker is used to select a window while swapping windows with
+      ---`:WinShift swap`.
+      ---@return integer? winid # Either the selected window ID, or `nil` to
+      ---   indicate that the user cancelled / gave an invalid selection.
+      window_picker = function()
+        return require("winshift.lib").pick_window({
+          -- A string of chars used as identifiers by the window picker.
+          picker_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+          filter_rules = {
+            -- This table allows you to indicate to the window picker that a window
+            -- should be ignored if its buffer matches any of the following criteria.
+            cur_win = true, -- Filter out the current window
+            floats = true,  -- Filter out floating windows
+            filetype = {},  -- List of ignored file types
+            buftype = {},   -- List of ignored buftypes
+            bufname = {},   -- List of vim regex patterns matching ignored buffer names
+          },
+          ---A function used to filter the list of selectable windows.
+          ---@param winids integer[] # The list of selectable window IDs.
+          ---@return integer[] filtered # The filtered list of window IDs.
+          filter_func = nil,
+        })
+      end,
+    })
+
+    vim.keymap.set('n', '<leader>ws', ':WinShift<CR>', { desc = 'enter [w]indow [s]hift mode' })
+    vim.keymap.set('n', '<leader>wx', ':WinShift swap<CR>', { desc = 'enter [w]indow swap mode' })
+
+    vim.keymap.set('n', '<C-S-h>', ':WinShift left<CR>', { desc = 'shift window left' })
+    vim.keymap.set('n', '<C-S-j>', ':WinShift down<CR>', { desc = 'shift window down' })
+    vim.keymap.set('n', '<C-S-k>', ':WinShift up<CR>', { desc = 'shift window up' })
+    vim.keymap.set('n', '<C-S-l>', ':WinShift right<CR>', { desc = 'shift window right' })
+  end
+}

@@ -6,6 +6,7 @@ return {
         require("winresize").resize(win, amt, dir)
       end
     end
+
     vim.keymap.set("n", "<left>", resize(0, 10, "left"))
     vim.keymap.set("n", "<right>", resize(0, 10, "right"))
     vim.keymap.set("n", "<up>", resize(0, 5, "up"))
