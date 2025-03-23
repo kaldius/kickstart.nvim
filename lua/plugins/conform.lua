@@ -1,31 +1,12 @@
-local state_file = vim.fn.stdpath('state') .. '/format_on_save.lua'
+local persistence = require('utils.persistence')
+local fos_filename = 'format_on_save'
 
--- Load the persisted state
-local function load_format_on_save()
-  local f = io.open(state_file, 'r')
-  if f then
-    local value = f:read('*a')
-    f:close()
-    return value == 'true'
-  end
-  return true -- Default to true if file does not exist
-end
-
--- Save the state to a file
-local function save_format_on_save(value)
-  local f = io.open(state_file, 'w')
-  if f then
-    f:write(value and 'true' or 'false')
-    f:close()
-  end
-end
-
--- Autoformat toggle
-vim.g.should_format_on_save = load_format_on_save()
+-- Autoformat persistence
+vim.g.should_format_on_save = persistence.load_state(fos_filename, true)
 
 vim.keymap.set('n', '<leader>fos', function()
   vim.g.should_format_on_save = not vim.g.should_format_on_save
-  save_format_on_save(vim.g.should_format_on_save)
+  persistence.save_state(fos_filename, vim.g.should_format_on_save)
 end, { desc = 'Toggle [f]ormat [o]n [s]ave' })
 
 return {
