@@ -7,6 +7,11 @@ vim.g.should_format_on_save = persistence.load_state(fos_filename, true)
 vim.keymap.set('n', '<leader>fos', function()
   vim.g.should_format_on_save = not vim.g.should_format_on_save
   persistence.save_state(fos_filename, vim.g.should_format_on_save)
+  if vim.g.should_format_on_save then
+    print("Format on save ON")
+  else
+    print("Format on save OFF")
+  end
 end, { desc = 'Toggle [f]ormat [o]n [s]ave' })
 
 return {

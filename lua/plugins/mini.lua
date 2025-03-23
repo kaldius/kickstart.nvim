@@ -61,8 +61,10 @@ return { -- Collection of various small independent plugins/modules
       vim.keymap.set('n', '<leader>anm', function()
         if vim.g.minianimate_disable then
           enable_animation()
+          print("mini.animate ON")
         else
           disable_animation()
+          print("mini.animate OFF")
         end
       end, { desc = '[an]i[m]ate' })
 
