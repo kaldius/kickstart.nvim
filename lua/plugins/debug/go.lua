@@ -1,6 +1,10 @@
 -- DAP config for go
+-- NOTE: Requires delve to be installe
 return {
-  'mcoqzeug/nvim-dap-go', -- NOTE: Requires delve to be installed
+  -- TODO: using a dev branch that hasn't been merged, eventually switch back to original
+  -- 'leoluz/nvim-dap-go',
+  'mcoqzeug/nvim-dap-go',
+  branch = 'set-cwd-for-dlv',
   opts = {
     dap_configurations = {
       {
