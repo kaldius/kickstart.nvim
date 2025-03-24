@@ -19,6 +19,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.neo-tree',
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
+  require 'plugins.debug.osv',
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
