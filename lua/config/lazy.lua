@@ -22,6 +22,7 @@ require('lazy').setup({
   require 'plugins.debug.osv',
   require 'plugins.debug.go',
   require 'plugins.debug.dapui',
+  require 'plugins.debug.virtual-text',
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the

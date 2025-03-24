@@ -1,9 +1,6 @@
 return {
   'mfussenegger/nvim-dap',
   dependencies = {
-    -- Adds variable values as virtual text
-    'theHamsta/nvim-dap-virtual-text',
-
     -- Installs the debug adapters for you
     'williamboman/mason.nvim',
     'jay-babu/mason-nvim-dap.nvim',
@@ -91,15 +88,5 @@ return {
       local hl = (type == 'Stopped') and 'DapStop' or 'DapBreak'
       vim.fn.sign_define(tp, { text = icon, texthl = hl, numhl = hl })
     end
-
-    require('nvim-dap-virtual-text').setup {
-      display_callback = function(variable)
-        -- Truncates long values
-        if #variable.value > 15 then
-          return ' ' .. string.sub(variable.value, 1, 15) .. ' ... '
-        end
-        return ' ' .. variable.value
-      end,
-    }
   end,
 }
