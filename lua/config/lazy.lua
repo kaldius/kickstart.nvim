@@ -21,6 +21,7 @@ require('lazy').setup({
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   require 'plugins.debug.osv',
   require 'plugins.debug.go',
+  require 'plugins.debug.dapui',
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
