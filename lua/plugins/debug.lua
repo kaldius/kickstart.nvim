@@ -1,5 +1,6 @@
+-- TODO: getting too big, consider splitting into smaller files in a new debug directory?
 return {
-  -- NOTE: Yes, you can install new plugins here!
+  -- NOTE: need `lazy = false` if we are using osv. Probably can fix this if we split to another file
   'mfussenegger/nvim-dap',
   -- NOTE: And you can specify dependencies as well
   dependencies = {
@@ -16,8 +17,13 @@ return {
     'williamboman/mason.nvim',
     'jay-babu/mason-nvim-dap.nvim',
 
-    -- Add your own debuggers here
-    'leoluz/nvim-dap-go', -- NOTE: Requires delve to be installed
+    -- DAP config for go
+    'mcoqzeug/nvim-dap-go', -- NOTE: Requires delve to be installed
+
+    -- DAP config for lua `:help osv`
+    -- NOTE: If you see "Neovim is waiting for input at startup. Aborting.", try launching the
+    -- server from the empty neovim screen, with no files open
+    'jbyuki/one-small-step-for-vimkind',
 
     -- For parsing .vscode/launch.json files which can sometimes be in json5
     {
@@ -88,6 +94,29 @@ return {
     local dap = require 'dap'
     local dapui = require 'dapui'
 
+    --
+    -- Lua debugging
+    --
+    dap.configurations.lua = {
+      {
+        type = 'nlua',
+        request = 'attach',
+        name = "Attach to running Neovim instance",
+      }
+    }
+
+    dap.adapters.nlua = function(callback, config)
+      callback({
+        type = 'server',
+        host = config.host or "127.0.0.1",
+        port = config.port or 8086,
+      })
+    end
+
+    vim.api.nvim_create_user_command("OsvLaunch", function()
+      require "osv".launch({ port = 8086 })
+    end, {})
+
     -- Set the .vscode/launch.json decoder to a json5 parser
     require('dap.ext.vscode').json_decode = require('json5').parse
 
@@ -135,7 +164,7 @@ return {
     vim.api.nvim_set_hl(0, 'DapStop', { fg = '#ffcc00' })
     local breakpoint_icons = vim.g.have_nerd_font
         and { Breakpoint = '', BreakpointCondition = '', BreakpointRejected = '', LogPoint = '', Stopped = '' }
-      or { Breakpoint = '●', BreakpointCondition = '⊜', BreakpointRejected = '⊘', LogPoint = '◆', Stopped = '⭔' }
+        or { Breakpoint = '●', BreakpointCondition = '⊜', BreakpointRejected = '⊘', LogPoint = '◆', Stopped = '⭔' }
     for type, icon in pairs(breakpoint_icons) do
       local tp = 'Dap' .. type
       local hl = (type == 'Stopped') and 'DapStop' or 'DapBreak'
