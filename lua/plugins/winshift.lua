@@ -52,12 +52,12 @@ return {
       end,
     })
 
-    vim.keymap.set('n', '<leader>ws', ':WinShift<CR>', { desc = 'enter [w]indow [s]hift mode' })
-    vim.keymap.set('n', '<leader>wx', ':WinShift swap<CR>', { desc = 'enter [w]indow swap mode' })
+    vim.keymap.set('n', '<leader>ws', ':WinShift<CR>', { desc = 'enter [w]indow [s]hift mode', silent = true })
+    vim.keymap.set('n', '<leader>wx', ':WinShift swap<CR>', { desc = 'enter [w]indow swap mode', silent = true })
 
-    vim.keymap.set('n', '<C-S-h>', ':WinShift left<CR>', { desc = 'shift window left' })
-    vim.keymap.set('n', '<C-S-j>', ':WinShift down<CR>', { desc = 'shift window down' })
-    vim.keymap.set('n', '<C-S-k>', ':WinShift up<CR>', { desc = 'shift window up' })
-    vim.keymap.set('n', '<C-S-l>', ':WinShift right<CR>', { desc = 'shift window right' })
+    vim.keymap.set('n', '<C-S-h>', ':WinShift left<CR>', { desc = 'shift window left', silent = true })
+    vim.keymap.set('n', '<C-S-j>', ':WinShift down<CR>', { desc = 'shift window down', silent = true })
+    vim.keymap.set('n', '<C-S-k>', ':WinShift up<CR>', { desc = 'shift window up', silent = true })
+    vim.keymap.set('n', '<C-S-l>', ':WinShift right<CR>', { desc = 'shift window right', silent = true })
   end
 }
