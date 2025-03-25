@@ -13,17 +13,13 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   -- import plugins instead of declaring them in lazy's setup function
   { import = 'plugins' }, -- `plugins` here represents the plugins directory in the `/lua` directory
+  { import = 'plugins.debug' },
   --  Here are some example plugins that I've included in the Kickstart repository.
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.neo-tree',
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
-  require 'plugins.debug.osv',
-  require 'plugins.debug.go',
-  require 'plugins.debug.dapui',
-  require 'plugins.debug.virtual-text',
-  require 'plugins.debug.mason-nvim-dap',
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
