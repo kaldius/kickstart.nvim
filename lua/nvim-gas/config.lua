@@ -32,7 +32,6 @@ end
 function M.setup_gopls()
   local lspconfig = require("lspconfig")
   local gas_gopls = require("nvim-gas.gas-gopls")
-  gas_gopls.parse = M.config.parse
 
   -- extract existing user settings and inject gas-specific settings
   local existing_config = lspconfig.gopls.document_config or {}

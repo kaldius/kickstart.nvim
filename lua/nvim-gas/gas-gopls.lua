@@ -1,6 +1,7 @@
 local M = {}
 
 local vscode_settings_path = ".vscode/settings.json"
+local parse = require('nvim-gas.config').parse or vim.fn.json_decode
 
 local function _get_modfile_path()
   -- check for existence
@@ -9,7 +10,6 @@ local function _get_modfile_path()
   end
 
   local content = vim.fn.readfile(vscode_settings_path)
-  local parse = M.parse or vim.fn.json_decode
   local ok, decoded = pcall(parse, table.concat(content, "\n"))
 
   if not ok or not decoded then
