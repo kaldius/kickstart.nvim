@@ -1,5 +1,5 @@
 return {
-  dir = "~/.config/nvim/lua/nvim-gas/",
+  url = "gitlab@git.garena.com:tengfoong.quan/nvim-gas.git",
   dependencies = {
     -- NOTE: this ensures lspconfig setup is run first
     -- nvim-gas plugin will append stuff to your existing gopls config and set up gopls again.
