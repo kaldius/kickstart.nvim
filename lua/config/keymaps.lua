@@ -35,5 +35,13 @@ map('n', '<C-S-k>', '<C-w>K', { desc = 'Move current window to the top' })
 
 map('n', '<leader>pv', ':Ex<CR>', { desc = 'Go to [p]roject [v]iew', silent = true })
 
-map('n', '<leader>th', '<cmd>:horiz term<CR>', { desc = '[t]erminal [h]orizontal' })
-map('n', '<leader>tv', '<cmd>:vert term<CR>', { desc = '[t]erminal [v]ertical' })
+map('n', '<leader>th', function()
+  local height = math.floor(vim.o.lines * 0.2) -- 20% of the screen height
+  vim.cmd("botright split | resize " .. height .. " | terminal")
+  vim.cmd("startinsert")
+end, { desc = '[t]erminal [h]orizontal' })
+map('n', '<leader>tv', function()
+  local width = math.floor(vim.o.columns * 0.4) -- 40% of the screen width
+  vim.cmd("botright vsplit | vertical resize " .. width .. " | terminal ")
+  vim.cmd("startinsert")
+end, { desc = '[t]erminal [v]ertical' })
