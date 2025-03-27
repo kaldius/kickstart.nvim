@@ -4,7 +4,6 @@ return {
   dependencies = {
     -- Automatically install LSPs and related tools to stdpath for Neovim
     -- Mason must be loaded before its dependents so we need to set it up here.
-    -- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
     {
       'williamboman/mason.nvim',
       opts = {
@@ -274,5 +273,16 @@ return {
         end,
       },
     }
+
+    -- NOTE: sourcekit-lsp must be installed separately
+    require("lspconfig").sourcekit.setup({
+      capabilities = vim.tbl_deep_extend('force', {}, capabilities, {
+        workspace = {
+          didChangeWatchedFiles = {
+            dynamicRegistration = true,
+          },
+        },
+      })
+    })
   end,
 }
