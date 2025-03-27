@@ -1,5 +1,5 @@
 -- DAP config for go
--- NOTE: Requires delve to be installe
+-- NOTE: Requires delve to be installed
 return {
   -- TODO: using a dev branch that hasn't been merged, eventually switch back to original
   -- 'leoluz/nvim-dap-go',
